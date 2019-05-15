@@ -13,6 +13,16 @@
         <h1>#{testView.testString}</h1>
 
         <h1>#{testViewCdi.testString}</h1>
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
 
+            <p:tree id="tree1" value="#{treeDNDView.root1}" var="node"
+                    draggable="true" droppable="true" dragdropScope="demo" dropRestrict="sibling">
+                <p:ajax event="dragdrop" listener="#{treeDNDView.onDragDrop}" update=":form, :form:msgs" />
+                <p:treeNode>
+                    <h:outputText value="#{node}" />
+                </p:treeNode>
+            </p:tree>
+        </h:form>
     </h:body>
 </html>
